@@ -1,13 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import marked from 'marked';
+import marked, { Renderer } from 'marked';
 import { withRouter } from 'react-router';
 
 
 const LINK_REGEX = /^\//;
 
+const renderer = new Renderer();
+
+renderer.link = (href, title, text) => (
+  `<a href="${href}" target="_blank" rel="noreferrer noopener">${text}</a>`
+);
+
 const options = {
+  renderer,
   gfm: false,
   tables: false,
   breaks: true,
