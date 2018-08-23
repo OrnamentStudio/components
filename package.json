@@ -1,6 +1,6 @@
 {
   "name": "ornament-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Components",
   "scripts": {
     "prepublishOnly": "npm run build",
