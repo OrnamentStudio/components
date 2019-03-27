@@ -1,76 +1,48 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import marked, { Renderer } from 'marked';
 import { withRouter } from 'react-router';
+import { getHtml, isLocalLink } from './utils';
 
 
-const LINK_REGEX = /^\//;
+const Markdown = (props) => {
+  const {
+    className: passedClassName,
+    text,
+    inline,
+    onClick,
 
-const renderer = new Renderer();
+    history,
+    match,
+    location,
+    staticContext,
 
-renderer.link = (href, title, text) => (
-  `<a href="${href}" target="_blank" rel="noreferrer noopener">${text}</a>`
-);
+    ...rest
+  } = props;
 
-const options = {
-  renderer,
-  gfm: false,
-  tables: false,
-  breaks: true,
-  sanitize: true,
-};
-
-class Markdown extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    const { history, onClick } = this.props;
+  const handleClick = (event) => {
     const { target } = event;
-    const isLink = target.tagName === 'A';
+    const link = target.getAttribute('href');
 
-    if (!isLink) return;
-
-    const href = target.getAttribute('href');
-    const isLocalLink = LINK_REGEX.test(href);
-
-    if (isLocalLink) {
+    if (isLocalLink(link)) {
       event.preventDefault();
-      history.push(href);
+      history.push(link);
     }
 
     if (onClick) onClick(event);
-  }
+  };
 
-  render() {
-    const {
-      text,
-      inline,
-      history,
-      match,
-      location,
-      staticContext,
-      onClick,
-      className: passedClassName,
-      ...cleanProps
-    } = this.props;
+  const className = classNames('c-markdown', passedClassName, { 'is-inline': inline });
 
-    const className = classNames('c-markdown', passedClassName, { 'is-inline': inline });
-    const safeContent = { __html: marked(text, options) };
-
-    return (
-      <span
-        {...cleanProps}
-        className={className}
-        dangerouslySetInnerHTML={safeContent}
-        onClick={this.handleClick}
-      />
-    );
-  }
-}
+  return (
+    <span
+      {...rest}
+      className={className}
+      dangerouslySetInnerHTML={getHtml(text)}
+      onClick={handleClick}
+    />
+  );
+};
 
 Markdown.defaultProps = {
   inline: false,
@@ -80,11 +52,12 @@ Markdown.propTypes = {
   className: PropTypes.string,
   inline: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   staticContext: PropTypes.any,
-  onClick: PropTypes.func,
 };
 
-export default withRouter(Markdown);
+export default withRouter(memo(Markdown));
