@@ -19,17 +19,30 @@ class ProgressiveImage extends PureComponent {
     if (!isReady) this.loadImage();
   }
 
-  loadImage() {
-    const { src } = this.props;
-    const image = new Image();
+  componentWillUnmount() {
+    this.destroyImage();
+  }
 
-    image.onload = () => {
+  loadImage() {
+    this.destroyImage();
+
+    const { src } = this.props;
+    this.image = new Image();
+
+    this.image.onload = () => {
       cache[src] = true;
       this.setState({ isReady: true });
     };
 
-    image.src = src;
+    this.image.src = src;
   }
+
+  destroyImage() {
+    if (!this.image) return;
+    this.image.onload = () => {};
+    delete this.image;
+  }
+
 
   render() {
     const { src, preview, className: passedClassName, ...rest } = this.props;
