@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const EmailLink = (props) => {
-  const { to, children, ...cleanProps } = props;
-  return <a {...cleanProps} href={`mailto:${to}`}>{children || to}</a>;
+const EmailLink = ({ to, children, ...rest }) => (
+  <a {...rest} href={`mailto:${to}`}>{children || to}</a>
+);
+
+EmailLink.defaultProps = {
+  children: null,
 };
 
 EmailLink.propTypes = {
