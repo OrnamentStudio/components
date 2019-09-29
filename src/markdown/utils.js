@@ -1,5 +1,5 @@
 import marked, { Renderer } from 'marked';
-
+import escapeHtml from 'escape-html';
 
 const LOCAL_LINK_REGEX = /^\//;
 
@@ -13,8 +13,7 @@ const options = {
   gfm: false,
   tables: false,
   breaks: true,
-  sanitize: true,
 };
 
-export const getHtml = (text) => ({ __html: marked(text, options) });
+export const getHtml = (text) => ({ __html: marked(escapeHtml(text), options) });
 export const isLocalLink = (url) => LOCAL_LINK_REGEX.test(url);

@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unused-prop-types, react/require-default-props */
 
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -21,15 +21,6 @@ class Meta extends PureComponent {
 }
 
 Meta.contextType = MetaContext;
-
-Meta.defaultProps = {
-  title: null,
-  titleTemplate: null,
-  description: null,
-  image: null,
-  robots: null,
-  canonical: null,
-};
 
 Meta.propTypes = {
   title: PropTypes.string,
