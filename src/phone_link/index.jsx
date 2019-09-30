@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const PhoneLink = (props) => {
-  const { to, children, ...cleanProps } = props;
-  return <a {...cleanProps} href={`tel:${to}`}>{children || to}</a>;
+const PhoneLink = ({ to, children, ...rest }) => (
+  <a {...rest} href={`tel:${to}`}>{children || to}</a>
+);
+
+PhoneLink.defaultProps = {
+  children: null,
 };
 
 PhoneLink.propTypes = {

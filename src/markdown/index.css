@@ -1,0 +1,11 @@
+.c-markdown {
+  display: block;
+
+  &.is-inline {
+    &,
+    & p {
+      display: inline;
+      margin: 0;
+    }
+  }
+}

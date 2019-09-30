@@ -1,14 +1,14 @@
-/* eslint react/jsx-no-target-blank: 0 */
+/* eslint react/jsx-no-target-blank: 0, jsx-a11y/anchor-has-content: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 
 const PopupLink = (props) => {
-  const { to, follow, ...cleanProps } = props;
+  const { to, follow, ...rest } = props;
   let rel = 'noreferrer noopener';
   if (!follow) rel += ' nofollow';
 
-  return <a {...cleanProps} href={to} rel={rel} target="_blank" />;
+  return <a {...rest} href={to} rel={rel} target="_blank" />;
 };
 
 PopupLink.defaultProps = {
@@ -17,7 +17,7 @@ PopupLink.defaultProps = {
 
 PopupLink.propTypes = {
   to: PropTypes.string.isRequired,
-  follow: PropTypes.bool.isRequired,
+  follow: PropTypes.bool,
 };
 
 export default PopupLink;

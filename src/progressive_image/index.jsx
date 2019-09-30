@@ -27,7 +27,7 @@ class ProgressiveImage extends PureComponent {
     this.destroyImage();
 
     const { src } = this.props;
-    this.image = new Image();
+    this.image = new global.Image();
 
     this.image.onload = () => {
       cache[src] = true;
@@ -43,9 +43,13 @@ class ProgressiveImage extends PureComponent {
     delete this.image;
   }
 
-
   render() {
-    const { src, preview, className: passedClassName, ...rest } = this.props;
+    const {
+      src,
+      preview,
+      className: passedClassName,
+      ...rest
+    } = this.props;
     const { isReady } = this.state;
 
     const className = classNames('c-progressive_image', passedClassName, {
@@ -69,6 +73,10 @@ class ProgressiveImage extends PureComponent {
     );
   }
 }
+
+ProgressiveImage.defaultProps = {
+  className: null,
+};
 
 ProgressiveImage.propTypes = {
   className: PropTypes.string,

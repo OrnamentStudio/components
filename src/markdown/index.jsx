@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withRouter } from 'react-router';
 import { getHtml, isLocalLink } from './utils';
 
 
@@ -11,11 +10,7 @@ const Markdown = (props) => {
     text,
     inline,
     onClick,
-
-    history,
-    match,
-    location,
-    staticContext,
+    onLinkClick,
 
     ...rest
   } = props;
@@ -26,7 +21,7 @@ const Markdown = (props) => {
 
     if (isLocalLink(link)) {
       event.preventDefault();
-      history.push(link);
+      onLinkClick(link);
     }
 
     if (onClick) onClick(event);
@@ -45,19 +40,20 @@ const Markdown = (props) => {
 };
 
 Markdown.defaultProps = {
+  className: null,
   inline: false,
+
+  onClick: null,
+  onLinkClick: null,
 };
 
 Markdown.propTypes = {
   className: PropTypes.string,
-  inline: PropTypes.bool.isRequired,
+  inline: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
 
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  staticContext: PropTypes.any,
+  onClick: PropTypes.func,
+  onLinkClick: PropTypes.func,
 };
 
-export default withRouter(memo(Markdown));
+export default memo(Markdown);
