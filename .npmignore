@@ -1,6 +1,11 @@
 preview/
+test/
+
 .babelrc
 .eslintignore
 .eslintrc
+.stylintrc
 .gitignore
 .npmignore
+.travis.yml
+webpack.config.js
