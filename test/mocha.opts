@@ -1,0 +1,7 @@
+--globals document,addEventListener,removeEventListener
+--check-leaks
+--recursive
+--ui bdd
+--reporter nyan
+--timeout 2000
+--require @babel/register

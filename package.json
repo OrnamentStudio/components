@@ -6,7 +6,9 @@
     "start": "webpack-dev-server",
     "stylelint": "stylelint \"./**/*.css\"",
     "eslint": "eslint --format codeframe \"./**/*.{js,jsx}\"",
-    "lint": "npm run eslint && npm run stylelint"
+    "lint": "npm run eslint && npm run stylelint",
+    "mocha": "mocha",
+    "test": "npm run mocha && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -27,8 +29,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.6.2",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
@@ -37,6 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "mocha": "^6.2.1",
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.1.2",
     "prop-types": "^15.7.2",
