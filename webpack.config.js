@@ -31,16 +31,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.styl/,
+        test: /\.sass/,
         use: [
           'style-loader',
           'css-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              'include css': true,
-            },
-          },
+          'sass-loader',
         ],
       },
 

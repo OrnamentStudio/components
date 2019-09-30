@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../src/markdown/index.styl';
+import '../../src/markdown/index.sass';
 import Markdown from '../../src/markdown';
 
 

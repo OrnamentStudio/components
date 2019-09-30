@@ -24,7 +24,7 @@ const MetaPreview = () => {
         {metaNode}
       </MetaProvider>
 
-      <input value={metaTitle} onChange={handleMetaChange} />
+      <input placeholder="meta title" value={metaTitle} onChange={handleMetaChange} />
       <br />
       <button onClick={logMeta} type="button">Log meta</button>
     </section>

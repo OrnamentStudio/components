@@ -4,7 +4,9 @@
   "description": "React Components",
   "scripts": {
     "start": "webpack-dev-server",
-    "lint": "eslint --format codeframe \"./**/*.{js,jsx}\""
+    "stylelint": "stylelint --syntax sass \"./**/*.sass\"",
+    "eslint": "eslint --format codeframe \"./**/*.{js,jsx}\"",
+    "lint": "npm run eslint && npm run stylelint"
   },
   "repository": {
     "type": "git",
@@ -38,9 +40,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "sass": "^1.22.12",
+    "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
+    "stylelint": "^11.0.0",
+    "stylelint-config-idiomatic-css": "^1.0.6",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.11.1",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
