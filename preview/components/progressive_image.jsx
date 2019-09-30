@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../src/progressive_image/index.sass';
 import ProgressiveImage from '../../src/progressive_image';
+import '../../src/progressive_image/index.css';
 
 
 const ProgressiveImagePreview = () => (

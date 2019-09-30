@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import './index.sass';
+import './index.css';
 
 
 const App = () => (

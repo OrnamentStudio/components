@@ -1,0 +1,19 @@
+.root {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  > section {
+    padding: 30px;
+    border: 1px solid #e3e8f3;
+    margin-top: 30px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    > h2 {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../src/markdown/index.sass';
 import Markdown from '../../src/markdown';
+import '../../src/markdown/index.css';
 
 
 const text = `

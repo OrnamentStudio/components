@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const nested = require('postcss-nested');
 
 
 module.exports = {
@@ -31,11 +32,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.sass/,
+        test: /\.css/,
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: { plugins: [nested] },
+          },
         ],
       },
 
