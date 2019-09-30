@@ -4,7 +4,7 @@
   "description": "React Components",
   "scripts": {
     "start": "webpack-dev-server",
-    "stylelint": "stylelint \"./**/*.scss\"",
+    "stylelint": "stylelint \"./**/*.css\"",
     "eslint": "eslint --format codeframe \"./**/*.{js,jsx}\"",
     "lint": "npm run eslint && npm run stylelint"
   },
