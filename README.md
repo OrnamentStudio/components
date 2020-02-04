@@ -13,7 +13,7 @@ You also need to install peer dependencies by yourself
 ```
 npm install react // v16.x.x
 npm install prop-types // v15.x.x
-npm install classnames // v2.x.x
+npm install clsx // v2.x.x
 ```
 
 This module works only with babel compiler since it uses jsx syntax and doesn't compile it on publish.

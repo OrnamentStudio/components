@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 
 const cache = {};
@@ -52,7 +52,7 @@ class ProgressiveImage extends PureComponent {
     } = this.props;
     const { isReady } = this.state;
 
-    const className = classNames('c-progressive_image', passedClassName, {
+    const className = clsx('c-progressive_image', passedClassName, {
       'is-ready': isReady,
     });
 
