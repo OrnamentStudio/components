@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { getHtml, isLocalLink } from './utils';
 
 
@@ -27,7 +27,7 @@ const Markdown = (props) => {
     if (onClick) onClick(event);
   };
 
-  const className = classNames('c-markdown', passedClassName, { 'is-inline': inline });
+  const className = clsx('c-markdown', passedClassName, { 'is-inline': inline });
 
   return (
     <span
